@@ -1,10 +1,21 @@
 import express from 'express' ;
 import dotenv from "dotenv"; 
+
+import patientRoutes from './routes/patientRoutes.js'
+
 import { connectDB } from './config/db.js';
 
 dotenv.config();
 
 const app =express();
+app.use(express.json()) //allow us to accept json data to body
+
+// app.post("/specialization", async(req,rs)=>{
+//     const specilization = req.body;
+// })
+app.use('',patientRoutes)
+
+
 app.get("/", (req,res)=>{
     res.send("server is ready")
 })
